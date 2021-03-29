@@ -59,7 +59,7 @@ export default class App extends LightningElement {
 
     formatData(result) {
         let individualSum = {};
-        result.features.forEach((data) => {
+        result.forEach((data) => {
             let item = data.attributes;
             let obj = {
                 Elapsed_Days_In_Sales_Stage: item.Elapsed_Days_In_Sales_Stage,

@@ -95,7 +95,7 @@
             >
                 <div class="slds-p-around_medium lgc-bg">
                     <label class="label-text">Select Region</label>
-                    <lightning-combobox
+                    <lightning:combobox
                         name="region"
                         label="region"
                         value={regionSelected}
@@ -103,7 +103,7 @@
                         options={regionList}
                         variant="label-hidden"
                         onchange={handleRegionChange}
-                    ></lightning-combobox>
+                    ></lightning:combobox>
                 </div>
             </div>
             <div class="chartContainer" lwc:dom="manual"></div>
@@ -116,13 +116,13 @@
             >
                 <div class="slds-p-around_medium lgc-bg">
                     <label class="label-text">Enter Region</label>
-                    <lightning-input
+                    <lightning:input
                         type="text"
                         autocomplete="off"
                         label="Enter region"
                         variant="label-hidden"
                         onkeyup={searchHandler}
-                    ></lightning-input>
+                    ></lightning:input>
                 </div>
                 <table class="table table-bordered">
                     <thead>
