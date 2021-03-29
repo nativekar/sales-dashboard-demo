@@ -119,27 +119,20 @@ lightning-input.label-text.slds-form-element label {
     background-color: #fe346e;
     color: #fff;
 }
-.recoveredColumnClass {
+.inactiveColumnClass {
     background-color: #5b8c5a;
     color: #fff;
 }
-.fatalityColumnClass-success {
-    background-color: #1eb2a6;
-    color: #fff;
-}
-.fatalityColumnClass-danger {
-    background-color: #d63447;
-    color: #fff;
-}
-.recoveryColumnClass-warning {
+
+.inactiveColumnClass-warning {
     background-color: #ffac41;
     color: #fff;
 }
-.recoveryColumnClass-success {
+.inactiveColumnClass-success {
     background-color: #48c774;
     color: #fff;
 }
-.countryName {
+.regionName {
     font-size: 1.5rem;
     font-weight: 700;
 }
