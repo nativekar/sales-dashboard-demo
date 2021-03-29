@@ -1,0 +1,166 @@
+<template>
+    <div class="app-container">
+        <!--Header-->
+        <header>Sales Dashboard</header>
+
+        <!--Total Cards-->
+        <div
+            class="slds-m-top_large slds-p-left_small slds-p-right_small slds-grid slds-gutters slds-wrap space"
+        >
+            <div
+                class="slds-col bg-primary slds-p-around_small slds-m-around_small"
+            >
+                <div
+                    class="slds-text-align_center slds-text-heading_medium white-color"
+                >
+                    Total Elapsed Days In Sales Stage
+                </div>
+                <div
+                    class="slds-text-align_center slds-text-heading_large white-color"
+                >
+                    {total.total_Elapsed_Days_In_Sales_Stage}
+                </div>
+            </div>
+            <div
+                class="slds-col bg-warning slds-p-around_small slds-m-around_small"
+            >
+                <div
+                    class="slds-text-align_center slds-text-heading_medium white-color"
+                >
+                    Total Days Identified Through Closing
+                </div>
+                <div
+                    class="slds-text-align_center slds-text-heading_large white-color"
+                >
+                    {total.Total_Days_Identified_Through_Closing}
+                </div>
+            </div>
+            <div
+                class="slds-col bg-success slds-p-around_small slds-m-around_small"
+            >
+                <div
+                    class="slds-text-align_center slds-text-heading_medium white-color"
+                >
+                    Total Days Identified Through Qualified
+                </div>
+                <div
+                    class="slds-text-align_center slds-text-heading_large white-color"
+                >
+                    {total.Total_Days_Identified_Through_Qualified}
+                </div>
+            </div>
+            <div
+                class="slds-col bg-danger slds-p-around_small slds-m-around_small"
+            >
+                <div
+                    class="slds-text-align_center slds-text-heading_medium white-color"
+                >
+                    Total Opportunity Amount in USD
+                </div>
+                <div
+                    class="slds-text-align_center slds-text-heading_large white-color"
+                >
+                    {total.Opportunity_Amount_USD}
+                </div>
+            </div>
+        </div>
+        <!--Card for heading and toggle view-->
+        <div class="slds-m-left_medium slds-m-right_medium">
+            <div class="slds-p-around_medium lgc-bg">
+                <div class="box-container">
+                    <h1>Sales Data by Region</h1>
+                    <div class="toggle-container">
+                        <div
+                            data-name="LIST"
+                            class={isListSelected}
+                            onclick={listHandler}
+                        >
+                            List
+                        </div>
+                        <div
+                            data-name="CHART"
+                            class={isChartSelected}
+                            onclick={listHandler}
+                        >
+                            Chart
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Show charts if showListView is false-->
+        <template if:false={showListView}>
+            <div
+                class="slds-m-left_medium slds-m-right_medium slds-m-left_medium slds-m-bottom_medium"
+            >
+                <div class="slds-p-around_medium lgc-bg">
+                    <label class="label-text">Select Region</label>
+                    <lightning-combobox
+                        name="region"
+                        label="region"
+                        value={regionSelected}
+                        placeholder="Select region"
+                        options={regionList}
+                        variant="label-hidden"
+                        onchange={handleRegionChange}
+                    ></lightning-combobox>
+                </div>
+            </div>
+            <div class="chartContainer" lwc:dom="manual"></div>
+        </template>
+
+        <!-- SHow charts if showListView is true-->
+        <template if:true={showListView}>
+            <div
+                class="slds-m-left_medium slds-m-right_medium slds-m-left_medium slds-m-bottom_medium"
+            >
+                <div class="slds-p-around_medium lgc-bg">
+                    <label class="label-text">Enter Region</label>
+                    <lightning-input
+                        type="text"
+                        autocomplete="off"
+                        label="Enter region"
+                        variant="label-hidden"
+                        onkeyup={searchHandler}
+                    ></lightning-input>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Region</th>
+                            <th>Elapsed Days In Sales Stage</th>
+                            <th>Total Days Identified Through Closing</th>
+                            <th>Days Identified Through Qualified</th>
+                            <th>Opportunity Amount in USD</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="myTable">
+                        <template for:each={filteredTableData} for:item="item">
+                            <tr key={item.Region}>
+                                <td class="region">{item.Region}</td>
+                                <td>{item.Confirmed}</td>
+                                <td class={item.activeColumnClass}>
+                                    {item.Total_Days_Identified_Through_Closing}
+                                </td>
+                                <td class={item.recoveredColumnClass}>
+                                    {item.Total_Days_Identified_Through_Qualified}
+                                </td>
+                                <td>{item.Opportunity_Amount_USD}</td>
+                            </tr>
+                        </template>
+                        <template if:false={filteredTableData.length}>
+                            <div>No Data Found</div>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <footer>
+            <span>
+                Proprietary software of SalesForce Inc. - to be used with a
+                valid license only!
+            </span>
+        </footer>
+    </div>
+</template>
