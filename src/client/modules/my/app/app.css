@@ -110,26 +110,13 @@ h1 {
     font-size: 1rem;
 }
 
-lightning-input.label-text.slds-form-element label {
+lightning:input.label-text.slds-form-element label {
     color: #fff;
 }
 
 /**table colors**/
 .activeColumnClass {
     background-color: #fe346e;
-    color: #fff;
-}
-.inactiveColumnClass {
-    background-color: #5b8c5a;
-    color: #fff;
-}
-
-.inactiveColumnClass-warning {
-    background-color: #ffac41;
-    color: #fff;
-}
-.inactiveColumnClass-success {
-    background-color: #48c774;
     color: #fff;
 }
 .regionName {

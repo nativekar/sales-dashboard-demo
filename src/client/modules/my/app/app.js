@@ -85,11 +85,11 @@ export default class App extends LightningElement {
             } else {
                 individualSum[item.Region] = obj;
             }
-            this.total.total_Total_Days_Identified_Through_Qualified +=
+            this.total.total_Days_Identified_Through_Qualified +=
                 item.Total_Days_Identified_Through_Qualified;
             this.total.total_Elapsed_Days_In_Sales_Stage +=
                 item.Elapsed_Days_In_Sales_Stage;
-            this.total.total_Total_Days_Identified_Through_Closing +=
+            this.total.total_Days_Identified_Through_Closing +=
                 item.Total_Days_Identified_Through_Closing;
             this.total.total_Opportunity_Amount_USD +=
                 item.Opportunity_Amount_USD;
@@ -97,7 +97,7 @@ export default class App extends LightningElement {
         let finalData = Object.keys(individualSum).map((data) => {
             let item = individualSum[data];
             let activeColumnClass =
-                item.Total_Days_Identified_Through_Closing <
+                item.Total_Days_Identified_Through_Closing >
                 item.Total_Days_Identified_Through_Qualified
                     ? 'activeColumnClass'
                     : '';
