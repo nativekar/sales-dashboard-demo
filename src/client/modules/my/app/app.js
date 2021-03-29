@@ -192,14 +192,14 @@ export default class App extends LightningElement {
 
     /** Chart rending on toggle click */
     triggerCharts() {
-        let country = this.tableData.filter((item) => {
+        let region = this.tableData.filter((item) => {
             return item.Region === this.regionSelected;
         });
         this.graphData = status.map((item) => {
-            return { name: item, color: colors[item], y: country[0][item] };
+            return { name: item, color: colors[item], y: region[0][item] };
         });
         window.setTimeout(() => {
             this.initializeChart();
-        }, 1000);
+        }, 500);
     }
 }

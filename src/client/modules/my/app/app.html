@@ -3,7 +3,7 @@
         <!--Header-->
         <header>Sales Dashboard</header>
 
-        <!--Total Cards-->
+        <!--Cards-->
         <div
             class="slds-m-top_large slds-p-left_small slds-p-right_small slds-grid slds-gutters slds-wrap space"
         >
@@ -88,7 +88,6 @@
                 </div>
             </div>
         </div>
-        <!-- Show charts if showListView is false-->
         <template if:false={showListView}>
             <div
                 class="slds-m-left_medium slds-m-right_medium slds-m-left_medium slds-m-bottom_medium"
@@ -108,8 +107,6 @@
             </div>
             <div class="chartContainer" lwc:dom="manual"></div>
         </template>
-
-        <!-- SHow charts if showListView is true-->
         <template if:true={showListView}>
             <div
                 class="slds-m-left_medium slds-m-right_medium slds-m-left_medium slds-m-bottom_medium"
@@ -134,12 +131,11 @@
                             <th>Opportunity Amount in USD</th>
                         </tr>
                     </thead>
-
                     <tbody id="myTable">
                         <template for:each={filteredTableData} for:item="item">
                             <tr key={item.Region}>
                                 <td class="region">{item.Region}</td>
-                                <td>{item.Confirmed}</td>
+                                <td>{item.Elapsed_Days_In_Sales_Stage}</td>
                                 <td class={item.activeColumnClass}>
                                     {item.Total_Days_Identified_Through_Closing}
                                 </td>
